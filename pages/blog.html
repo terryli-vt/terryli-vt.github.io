@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Your Name</title>
+  <meta name="description" content="Thoughts on software, design, and building things." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script>
+    (function(){
+      const t = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Your<span>Name</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="../index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+</div>
+
+<main class="page">
+  <div style="margin-bottom:3rem">
+    <div class="section-label fade-up">Writing</div>
+    <h1 class="fade-up delay-1">Blog</h1>
+    <p class="fade-up delay-2" style="color:var(--fg-muted);font-size:14.5px;margin-top:0.75rem;max-width:420px;line-height:1.75">
+      Occasional thoughts on engineering, design systems, and things I find interesting.
+    </p>
+  </div>
+
+  <!-- Blog list rendered by blog.js -->
+  <div id="blog-list" class="blog-list reveal"></div>
+
+  <!--
+    HOW TO ADD A POST:
+    1. Create /blog/posts/your-slug.md with frontmatter (see example below)
+    2. Add an entry to POST_REGISTRY in /js/blog.js
+
+    Example frontmatter:
+    ---
+    title: "Your Post Title"
+    date: "2025-06-01"
+    excerpt: "A short preview shown on the blog list page."
+    tags: ["engineering", "css"]
+    readtime: "5 min read"
+    ---
+
+    Your markdown content here...
+  -->
+</main>
+
+<footer class="footer">
+  <span>© 2025 Your Name</span>
+  <div class="footer-links">
+    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+    <a href="mailto:you@example.com">Email</a>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/blog.js"></script>
+</body>
+</html>

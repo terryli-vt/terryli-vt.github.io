@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post — Your Name</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <script>
+    (function(){
+      const t = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../../index.html" class="nav-logo">Your<span>Name</span></a>
+  <div class="nav-links">
+    <a href="../../index.html">Home</a>
+    <a href="../projects.html">Projects</a>
+    <a href="/pages/blog.html">Blog</a>
+    <a href="../about.html">About</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="../../index.html">Home</a>
+  <a href="../projects.html">Projects</a>
+  <a href="/pages/blog.html">Blog</a>
+  <a href="../about.html">About</a>
+</div>
+
+<main class="page">
+  <!-- Back link -->
+  <a href="/pages/blog.html" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--fg-muted);margin-bottom:2.5rem;transition:color 0.2s" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--fg-muted)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    All posts
+  </a>
+
+  <!-- Post header -->
+  <header style="margin-bottom:3rem">
+    <div id="post-meta" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--fg-muted);font-family:var(--mono);margin-bottom:1rem"></div>
+    <h1 id="post-title" style="font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.5rem);font-weight:400;letter-spacing:-0.025em;line-height:1.15"></h1>
+  </header>
+
+  <!-- Post body (markdown rendered here) -->
+  <article id="post-content" class="prose"></article>
+
+  <!-- Footer nav -->
+  <div style="margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border)">
+    <a href="/pages/blog.html" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--fg-muted);transition:color 0.2s" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--fg-muted)'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to all posts
+    </a>
+  </div>
+</main>
+
+<footer class="footer">
+  <span>© 2025 Your Name</span>
+  <div class="footer-links">
+    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+    <a href="mailto:you@example.com">Email</a>
+  </div>
+</footer>
+
+<!-- marked.js for markdown rendering -->
+<script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+<script src="../../js/main.js"></script>
+<script src="../../js/blog.js"></script>
+</body>
+</html>
