@@ -1,284 +1,397 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects — Your Name</title>
-  <meta name="description" content="A collection of projects I've built." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Terry Li</title>
+    <meta name="description" content="A collection of projects I've built." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-mark-cropped.svg" />
 
-  <script>
-    (function(){
-      const t = localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
+    <script>
+      (function () {
+        const t =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
 
-  <style>
-    /* ---- Project detail cards (expanded) ---- */
-    .project-detail {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-      background: var(--bg);
-      margin-bottom: 20px;
-      transition: border-color var(--t);
-      scroll-margin-top: calc(var(--nav-h) + 2rem);
-    }
-    .project-detail:hover { border-color: var(--border-2); }
+    <style>
+      /* ---- Project detail cards (expanded) ---- */
+      .project-detail {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 2rem;
+        background: var(--bg);
+        margin-bottom: 20px;
+        transition: border-color var(--t);
+        scroll-margin-top: calc(var(--nav-h) + 2rem);
+      }
+      .project-detail:hover {
+        border-color: var(--border-2);
+      }
 
-    .project-detail-header {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 1rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
+      .project-detail-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
 
-    .project-detail-title {
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
+      .project-detail-title {
+        font-family: var(--serif);
+        font-size: 1.35rem;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+      }
 
-    .project-detail-links {
-      display: flex; gap: 8px; flex-shrink: 0;
-    }
+      .project-detail-links {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
 
-    .proj-link {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 12px; font-weight: 500;
-      padding: 6px 12px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--fg-2);
-      transition: all var(--t);
-    }
-    .proj-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
-    }
-    .proj-link svg { width: 13px; height: 13px; }
+      .proj-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--fg-2);
+        transition: all var(--t);
+      }
+      .proj-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .proj-link svg {
+        width: 13px;
+        height: 13px;
+      }
 
-    .project-detail-desc {
-      font-size: 14.5px;
-      color: var(--fg-2);
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-      max-width: 580px;
-    }
+      .project-detail-desc {
+        font-size: 14.5px;
+        color: var(--fg-2);
+        line-height: 1.8;
+        margin-bottom: 1.25rem;
+        max-width: 580px;
+      }
 
-    .project-detail-stack {
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin-bottom: 1.5rem;
-    }
+      .project-detail-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 1.5rem;
+      }
 
-    /* Screenshot placeholder / real image */
-    .project-screenshot {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-2);
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--fg-muted); font-size: 13px;
-    }
-    .project-screenshot img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
+      /* Screenshot placeholder / real image */
+      .project-screenshot {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--bg-2);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg-muted);
+        font-size: 13px;
+      }
+      .project-screenshot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-    /* Status badge */
-    .status-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 11px; font-weight: 500;
-      padding: 3px 8px; border-radius: 999px;
-      letter-spacing: 0.03em;
-    }
-    .status-badge::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-    }
-    .status-live { color: #2d7a4a; background: #e8f5ee; }
-    .status-live::before { background: #2d7a4a; }
-    [data-theme="dark"] .status-live { color: #6aaa82; background: #1a2e22; }
-    [data-theme="dark"] .status-live::before { background: #6aaa82; }
-    .status-wip { color: #8a6c1a; background: #fdf3d8; }
-    .status-wip::before { background: #c89920; }
-    [data-theme="dark"] .status-wip { color: #e0b84a; background: #2a2410; }
-    [data-theme="dark"] .status-wip::before { background: #e0b84a; }
-  </style>
-</head>
-<body>
+      /* Status badge */
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 3px 8px;
+        border-radius: 999px;
+        letter-spacing: 0.03em;
+      }
+      .status-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+      .status-live {
+        color: #2d7a4a;
+        background: #e8f5ee;
+      }
+      .status-live::before {
+        background: #2d7a4a;
+        animation: pulse-dot 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse-dot {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(45, 122, 74, 0.5); }
+        50%       { box-shadow: 0 0 0 4px rgba(45, 122, 74, 0); }
+      }
+      [data-theme="dark"] .status-live {
+        color: #6aaa82;
+        background: #1a2e22;
+      }
+      [data-theme="dark"] .status-live::before {
+        background: #6aaa82;
+        animation: pulse-dot-dark 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse-dot-dark {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(106, 170, 130, 0.5); }
+        50%       { box-shadow: 0 0 0 4px rgba(106, 170, 130, 0); }
+      }
+      .status-wip {
+        color: #8a6c1a;
+        background: #fdf3d8;
+      }
+      .status-wip::before {
+        background: #c89920;
+      }
+      [data-theme="dark"] .status-wip {
+        color: #e0b84a;
+        background: #2a2410;
+      }
+      [data-theme="dark"] .status-wip::before {
+        background: #e0b84a;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="nav"></nav>
+    <div class="nav-mobile" id="nav-mobile"></div>
 
-<!-- NAVBAR -->
-<nav class="nav">
-  <a href="../index.html" class="nav-logo">Your<span>Name</span></a>
-  <div class="nav-links">
-    <a href="../index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="about.html">About</a>
-  </div>
-  <div class="nav-right">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+    <!-- MAIN -->
+    <main class="page-wide">
+      <div style="margin-bottom: 3rem">
+        <div class="section-label fade-up">Work</div>
+        <h1 class="fade-up delay-1">Projects</h1>
+        <p
+          class="fade-up delay-2"
+          style="
+            color: var(--fg-muted);
+            font-size: 14.5px;
+            margin-top: 0.75rem;
+            max-width: 440px;
+            line-height: 1.75;
+          "
+        >
+          A selection of things I've built — personal projects, open-source
+          tools, and experiments.
+        </p>
+      </div>
 
-<div class="nav-mobile" id="nav-mobile">
-  <a href="../index.html">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="blog.html">Blog</a>
-  <a href="about.html">About</a>
-</div>
-
-<!-- MAIN -->
-<main class="page-wide">
-
-  <div style="margin-bottom:3rem">
-    <div class="section-label fade-up">Work</div>
-    <h1 class="fade-up delay-1">Projects</h1>
-    <p class="fade-up delay-2" style="color:var(--fg-muted);font-size:14.5px;margin-top:0.75rem;max-width:440px;line-height:1.75">
-      A selection of things I've built — personal projects, open-source tools, and experiments.
-    </p>
-  </div>
-
-  <!-- ==========================================
+      <!-- ==========================================
        PROJECT 1 — replace with your real project
   =========================================== -->
-  <div class="project-detail reveal" id="project-flowboard">
-    <div class="project-detail-header">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.4rem">
-          <h2 class="project-detail-title">Flowboard</h2>
-          <span class="status-badge status-live">Live</span>
+      <div class="project-detail reveal" id="project-flowboard">
+        <div class="project-detail-header">
+          <div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 0.4rem;
+              "
+            >
+              <h2 class="project-detail-title">Flowboard</h2>
+              <span class="status-badge status-live">Live</span>
+            </div>
+          </div>
+          <div class="project-detail-links">
+            <a
+              href="https://github.com/yourusername/flowboard"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"
+                />
+              </svg>
+              GitHub
+            </a>
+            <a
+              href="https://flowboard.example.com"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Live demo
+            </a>
+          </div>
+        </div>
+
+        <p class="project-detail-desc">
+          A real-time collaborative Kanban board built with conflict-free
+          replicated data types (CRDTs) for seamless multi-user sync. Supports
+          offline edits, optimistic UI updates, and sub-50ms latency on
+          reconnect. Board state is persisted to PostgreSQL via a Node.js
+          backend.
+        </p>
+
+        <div class="project-detail-stack">
+          <span class="project-tag">React</span>
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">WebSockets</span>
+          <span class="project-tag">CRDTs</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">PostgreSQL</span>
+        </div>
+
+        <!-- Screenshot: replace src with real image path, e.g. ../assets/screenshots/flowboard.png -->
+        <div class="project-screenshot">
+          <!-- <img src="../assets/screenshots/flowboard.png" alt="Flowboard screenshot" /> -->
+          <span>Screenshot coming soon</span>
         </div>
       </div>
-      <div class="project-detail-links">
-        <a href="https://github.com/yourusername/flowboard" target="_blank" rel="noopener" class="proj-link">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
-          GitHub
-        </a>
-        <a href="https://flowboard.example.com" target="_blank" rel="noopener" class="proj-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-          Live demo
-        </a>
-      </div>
-    </div>
 
-    <p class="project-detail-desc">
-      A real-time collaborative Kanban board built with conflict-free replicated data types (CRDTs)
-      for seamless multi-user sync. Supports offline edits, optimistic UI updates, and sub-50ms
-      latency on reconnect. Board state is persisted to PostgreSQL via a Node.js backend.
-    </p>
-
-    <div class="project-detail-stack">
-      <span class="project-tag">React</span>
-      <span class="project-tag">TypeScript</span>
-      <span class="project-tag">WebSockets</span>
-      <span class="project-tag">CRDTs</span>
-      <span class="project-tag">Node.js</span>
-      <span class="project-tag">PostgreSQL</span>
-    </div>
-
-    <!-- Screenshot: replace src with real image path, e.g. ../assets/screenshots/flowboard.png -->
-    <div class="project-screenshot">
-      <!-- <img src="../assets/screenshots/flowboard.png" alt="Flowboard screenshot" /> -->
-      <span>Screenshot coming soon</span>
-    </div>
-  </div>
-
-  <!-- ==========================================
+      <!-- ==========================================
        PROJECT 2
   =========================================== -->
-  <div class="project-detail reveal" id="project-palette">
-    <div class="project-detail-header">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.4rem">
-          <h2 class="project-detail-title">Palette</h2>
-          <span class="status-badge status-live">Live</span>
+      <div class="project-detail reveal" id="project-palette">
+        <div class="project-detail-header">
+          <div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 0.4rem;
+              "
+            >
+              <h2 class="project-detail-title">Palette</h2>
+              <span class="status-badge status-live">Live</span>
+            </div>
+          </div>
+          <div class="project-detail-links">
+            <a
+              href="https://github.com/yourusername/palette"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"
+                />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <p class="project-detail-desc">
+          A design token manager and CSS variable generator. Sync tokens from
+          Figma Variables, then export to Tailwind config, CSS custom
+          properties, or CSS-in-JS format. Used by 400+ designers and engineers
+          to keep design and code in sync.
+        </p>
+
+        <div class="project-detail-stack">
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Figma API</span>
+          <span class="project-tag">Zod</span>
+          <span class="project-tag">Vercel</span>
+        </div>
+
+        <div class="project-screenshot">
+          <span>Screenshot coming soon</span>
         </div>
       </div>
-      <div class="project-detail-links">
-        <a href="https://github.com/yourusername/palette" target="_blank" rel="noopener" class="proj-link">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
-          GitHub
-        </a>
-      </div>
-    </div>
 
-    <p class="project-detail-desc">
-      A design token manager and CSS variable generator. Sync tokens from Figma Variables,
-      then export to Tailwind config, CSS custom properties, or CSS-in-JS format.
-      Used by 400+ designers and engineers to keep design and code in sync.
-    </p>
-
-    <div class="project-detail-stack">
-      <span class="project-tag">Next.js</span>
-      <span class="project-tag">TypeScript</span>
-      <span class="project-tag">Figma API</span>
-      <span class="project-tag">Zod</span>
-      <span class="project-tag">Vercel</span>
-    </div>
-
-    <div class="project-screenshot">
-      <span>Screenshot coming soon</span>
-    </div>
-  </div>
-
-  <!-- ==========================================
+      <!-- ==========================================
        PROJECT 3
   =========================================== -->
-  <div class="project-detail reveal" id="project-lens">
-    <div class="project-detail-header">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.4rem">
-          <h2 class="project-detail-title">Lens</h2>
-          <span class="status-badge status-wip">In progress</span>
+      <div class="project-detail reveal" id="project-lens">
+        <div class="project-detail-header">
+          <div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 0.4rem;
+              "
+            >
+              <h2 class="project-detail-title">Lens</h2>
+              <span class="status-badge status-wip">In progress</span>
+            </div>
+          </div>
+          <div class="project-detail-links">
+            <a
+              href="https://github.com/yourusername/lens"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"
+                />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <p class="project-detail-desc">
+          A Chrome DevTools extension for web performance debugging. Visualizes
+          Core Web Vitals in real time, highlights cumulative layout shift
+          sources, and flags long tasks and hydration mismatches directly on the
+          page — no configuration required.
+        </p>
+
+        <div class="project-detail-stack">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">Chrome Extensions API</span>
+          <span class="project-tag">Web Vitals</span>
+          <span class="project-tag">PerformanceObserver</span>
+        </div>
+
+        <div class="project-screenshot">
+          <span>Screenshot coming soon</span>
         </div>
       </div>
-      <div class="project-detail-links">
-        <a href="https://github.com/yourusername/lens" target="_blank" rel="noopener" class="proj-link">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
-          GitHub
-        </a>
-      </div>
-    </div>
 
-    <p class="project-detail-desc">
-      A Chrome DevTools extension for web performance debugging. Visualizes Core Web Vitals
-      in real time, highlights cumulative layout shift sources, and flags long tasks and
-      hydration mismatches directly on the page — no configuration required.
-    </p>
-
-    <div class="project-detail-stack">
-      <span class="project-tag">JavaScript</span>
-      <span class="project-tag">Chrome Extensions API</span>
-      <span class="project-tag">Web Vitals</span>
-      <span class="project-tag">PerformanceObserver</span>
-    </div>
-
-    <div class="project-screenshot">
-      <span>Screenshot coming soon</span>
-    </div>
-  </div>
-
-  <!--
+      <!--
     ═══════════════════════════════════════════
     ADD MORE PROJECTS by duplicating the block above.
     Remember to:
@@ -287,17 +400,10 @@
       3. Add a real screenshot or remove the div
     ═══════════════════════════════════════════
   -->
+    </main>
 
-</main>
+    <footer class="footer"></footer>
 
-<footer class="footer">
-  <span>© 2025 Your Name</span>
-  <div class="footer-links">
-    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-    <a href="mailto:you@example.com">Email</a>
-  </div>
-</footer>
-
-<script src="../js/main.js"></script>
-</body>
+    <script src="../js/main.js"></script>
+  </body>
 </html>

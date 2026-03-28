@@ -1,259 +1,395 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Software Engineer</title>
-  <meta name="description" content="Full-stack software engineer. Building things for the web." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terry Li's Portfolio</title>
+    <meta
+      name="description"
+      content="Full-stack software engineer. Building things for the web."
+    />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/assets/logo-mark-cropped.svg"
+    />
 
-  <!-- Theme: apply before render to avoid flash -->
-  <script>
-    (function(){
-      const t = localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
-</head>
-<body>
-
-<!-- ============================================================
+    <!-- Theme: apply before render to avoid flash -->
+    <script>
+      (function () {
+        const t =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- ============================================================
      NAVBAR
 ============================================================ -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">Your<span>Name</span></a>
+    <nav class="nav"></nav>
+    <div class="nav-mobile" id="nav-mobile"></div>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="pages/projects.html">Projects</a>
-    <a href="pages/blog.html">Blog</a>
-    <a href="pages/about.html">About</a>
-  </div>
-
-  <div class="nav-right">
-    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
-      <!-- icon injected by JS -->
-    </button>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- Mobile nav -->
-<div class="nav-mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="pages/projects.html">Projects</a>
-  <a href="pages/blog.html">Blog</a>
-  <a href="pages/about.html">About</a>
-</div>
-
-<!-- ============================================================
+    <!-- ============================================================
      MAIN
 ============================================================ -->
-<main class="page">
+    <main class="page">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-eyebrow fade-up">Available for new roles</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-eyebrow fade-up">Available for new roles</div>
+        <h1 class="fade-up delay-1">
+          Hi, I'm <em>Tianyu (Terry) Li</em>.<br />
+          <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+        </h1>
 
-    <h1 class="fade-up delay-1">
-      Hi, I'm <em>Your Name</em>.<br>
-      I build for the web.
-    </h1>
+        <p class="hero-desc fade-up delay-2">
+          Full-stack engineer focused on clean interfaces and reliable systems.
+          I care about the details — from API design to the half-second
+          interaction that makes something feel right.
+        </p>
 
-    <p class="hero-desc fade-up delay-2">
-      Full-stack engineer focused on clean interfaces and reliable systems.
-      I care about the details — from API design to the half-second interaction
-      that makes something feel right.
-    </p>
+        <!-- Links -->
+        <div class="links-row fade-up delay-3">
+          <!-- Resume -->
+          <a href="assets/resume.pdf" target="_blank" class="link-chip">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14,2 14,8 20,8" />
+            </svg>
+            Resume
+          </a>
 
-    <!-- Links -->
-    <div class="links-row fade-up delay-3">
-      <!-- Resume -->
-      <a href="assets/resume.pdf" target="_blank" class="link-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/>
-        </svg>
-        Resume
-      </a>
+          <!-- GitHub -->
+          <a
+            href="https://github.com/terryli-vt"
+            target="_blank"
+            rel="noopener"
+            class="link-chip"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"
+              />
+            </svg>
+            GitHub
+          </a>
 
-      <!-- GitHub -->
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="link-chip">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-        </svg>
-        GitHub
-      </a>
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/terry-li-vt/"
+            target="_blank"
+            rel="noopener"
+            class="link-chip"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
 
-      <!-- LinkedIn -->
-      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="link-chip">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-        </svg>
-        LinkedIn
-      </a>
-
-      <!-- Email -->
-      <a href="mailto:you@example.com" class="link-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-        </svg>
-        Email
-      </a>
-    </div>
-  </section>
-
-  <hr class="divider reveal" />
-
-  <!-- SKILLS -->
-  <section class="reveal">
-    <div class="section-label">Skills</div>
-    <h2 class="section-title">Tech Stack</h2>
-
-    <div class="skills-grid">
-      <!--
-        Use https://cdn.simpleicons.org/{name} for logos.
-        Full list: https://simpleicons.org/
-        Or swap with your own icon files in assets/icons/
-      -->
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript" loading="lazy" />
-        <span class="skill-name">TypeScript</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/react/61dafb" alt="React" loading="lazy" />
-        <span class="skill-name">React</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="Next.js" loading="lazy" />
-        <span class="skill-name">Next.js</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node.js" loading="lazy" />
-        <span class="skill-name">Node.js</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/python/3776ab" alt="Python" loading="lazy" />
-        <span class="skill-name">Python</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/postgresql/4169e1" alt="PostgreSQL" loading="lazy" />
-        <span class="skill-name">PostgreSQL</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/redis/dc382d" alt="Redis" loading="lazy" />
-        <span class="skill-name">Redis</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/docker/2496ed" alt="Docker" loading="lazy" />
-        <span class="skill-name">Docker</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/amazonaws/232f3e" alt="AWS" loading="lazy" />
-        <span class="skill-name">AWS</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/git/f05032" alt="Git" loading="lazy" />
-        <span class="skill-name">Git</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/tailwindcss/06b6d4" alt="Tailwind" loading="lazy" />
-        <span class="skill-name">Tailwind</span>
-      </div>
-      <div class="skill-item">
-        <img src="https://cdn.simpleicons.org/figma/f24e1e" alt="Figma" loading="lazy" />
-        <span class="skill-name">Figma</span>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider reveal" />
-
-  <!-- PROJECTS PREVIEW -->
-  <section class="reveal">
-    <div class="section-label">Work</div>
-    <h2 class="section-title">Selected Projects</h2>
-
-    <div class="projects-grid">
-
-      <!-- Project 1 — replace with your real projects -->
-      <a class="project-card" href="pages/projects.html#project-flowboard">
-        <div class="project-card-title">
-          Flowboard
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
+          <!-- Email -->
+          <a href="mailto:terryli199@gmail.com" class="link-chip">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Email
+          </a>
         </div>
-        <p class="project-card-desc">Real-time collaborative Kanban board with conflict-free sync across clients using CRDTs.</p>
-        <div class="project-tags">
-          <span class="project-tag">React</span>
-          <span class="project-tag">TypeScript</span>
-          <span class="project-tag">WebSockets</span>
-          <span class="project-tag">PostgreSQL</span>
+      </section>
+
+      <hr class="divider reveal" />
+
+      <!-- SKILLS -->
+      <section class="reveal">
+        <div class="section-label">Skills</div>
+        <h2 class="section-title">Tech Stack</h2>
+
+        <div class="skills-grid">
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/typescript/3178c6"
+              alt="TypeScript"
+              loading="lazy"
+            />
+            <span class="skill-name">TypeScript</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/python/3776ab"
+              alt="Python"
+              loading="lazy"
+            />
+            <span class="skill-name">Python</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/nextdotjs/000000"
+              alt="Next.js"
+              loading="lazy"
+              class="skill-invert"
+            />
+            <span class="skill-name">Next.js</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/react/61dafb"
+              alt="React"
+              loading="lazy"
+            />
+            <span class="skill-name">React</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/vuedotjs/4FC08D"
+              alt="Vue.js"
+              loading="lazy"
+            />
+            <span class="skill-name">Vue.js</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/tailwindcss/06b6d4"
+              alt="Tailwind"
+              loading="lazy"
+            />
+            <span class="skill-name">Tailwind</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/bootstrap/7952B3"
+              alt="Bootstrap"
+              loading="lazy"
+            />
+            <span class="skill-name">Bootstrap</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/nodedotjs/339933"
+              alt="Node.js"
+              loading="lazy"
+            />
+            <span class="skill-name">Node.js</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/express/000000"
+              alt="Express"
+              loading="lazy"
+              class="skill-invert"
+            />
+            <span class="skill-name">Express</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/mongodb/47A248"
+              alt="MongoDB"
+              loading="lazy"
+            />
+            <span class="skill-name">MongoDB</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/postgresql/4169e1"
+              alt="PostgreSQL"
+              loading="lazy"
+            />
+            <span class="skill-name">PostgreSQL</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/figma/f24e1e"
+              alt="Figma"
+              loading="lazy"
+            />
+            <span class="skill-name">Figma</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.simpleicons.org/git/f05032"
+              alt="Git"
+              loading="lazy"
+            />
+            <span class="skill-name">Git</span>
+          </div>
+          <div class="skill-item">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#8a8880"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+              <line x1="6" y1="8" x2="10" y2="8" />
+              <line x1="6" y1="11" x2="8" y2="11" />
+              <line x1="14" y1="8" x2="18" y2="8" />
+              <line x1="14" y1="11" x2="18" y2="11" />
+            </svg>
+            <span class="skill-name">ERP</span>
+          </div>
         </div>
-      </a>
+      </section>
 
-      <!-- Project 2 -->
-      <a class="project-card" href="pages/projects.html#project-palette">
-        <div class="project-card-title">
-          Palette
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
+      <hr class="divider reveal" />
+
+      <!-- PROJECTS PREVIEW -->
+      <section class="reveal">
+        <div class="section-label">Work</div>
+        <h2 class="section-title">Selected Projects</h2>
+
+        <div class="projects-grid">
+          <!-- Project 1 — replace with your real projects -->
+          <a class="project-card" href="pages/projects.html#project-flowboard">
+            <div class="project-card-title">
+              Flowboard
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </div>
+            <p class="project-card-desc">
+              Real-time collaborative Kanban board with conflict-free sync
+              across clients using CRDTs.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">WebSockets</span>
+              <span class="project-tag">PostgreSQL</span>
+            </div>
+          </a>
+
+          <!-- Project 2 -->
+          <a class="project-card" href="pages/projects.html#project-palette">
+            <div class="project-card-title">
+              Palette
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </div>
+            <p class="project-card-desc">
+              Design token manager and CSS variable generator that exports to
+              Figma, Tailwind, and CSS-in-JS.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">Figma API</span>
+              <span class="project-tag">Zod</span>
+            </div>
+          </a>
+
+          <!-- Project 3 -->
+          <a class="project-card" href="pages/projects.html#project-lens">
+            <div class="project-card-title">
+              Lens
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </div>
+            <p class="project-card-desc">
+              Chrome extension for inspecting web performance — highlights
+              layout shifts, long tasks, and hydration mismatches.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Web Vitals</span>
+              <span class="project-tag">Chrome API</span>
+            </div>
+          </a>
         </div>
-        <p class="project-card-desc">Design token manager and CSS variable generator that exports to Figma, Tailwind, and CSS-in-JS.</p>
-        <div class="project-tags">
-          <span class="project-tag">Next.js</span>
-          <span class="project-tag">Figma API</span>
-          <span class="project-tag">Zod</span>
-        </div>
-      </a>
 
-      <!-- Project 3 -->
-      <a class="project-card" href="pages/projects.html#project-lens">
-        <div class="project-card-title">
-          Lens
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </div>
-        <p class="project-card-desc">Chrome extension for inspecting web performance — highlights layout shifts, long tasks, and hydration mismatches.</p>
-        <div class="project-tags">
-          <span class="project-tag">JavaScript</span>
-          <span class="project-tag">Web Vitals</span>
-          <span class="project-tag">Chrome API</span>
-        </div>
-      </a>
+        <p style="margin-top: 1.5rem">
+          <a
+            href="pages/projects.html"
+            style="
+              font-size: 13px;
+              color: var(--accent);
+              border-bottom: 1px solid var(--accent);
+              padding-bottom: 1px;
+            "
+          >
+            View all projects →
+          </a>
+        </p>
+      </section>
+    </main>
 
-    </div>
+    <!-- FOOTER -->
+    <footer class="footer"></footer>
 
-    <p style="margin-top:1.5rem">
-      <a href="pages/projects.html" style="font-size:13px;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px;">
-        View all projects →
-      </a>
-    </p>
-  </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <span>© 2025 Your Name</span>
-  <div class="footer-links">
-    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-    <a href="mailto:you@example.com">Email</a>
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
-</body>
+    <script src="js/main.js"></script>
+  </body>
 </html>
