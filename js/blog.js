@@ -6,7 +6,7 @@
 
 // ---- Registry: add new posts here ----
 const POST_REGISTRY = [
-  { slug: 'building-in-public', file: '/blog/posts/building-in-public.md' },
+  { slug: 'building-fitlyst',   file: '/blog/posts/building-fitlyst.md' },
   { slug: 'hello-world',        file: '/blog/posts/hello-world.md' },
   // Add more posts here as you write them
 ];
@@ -152,6 +152,82 @@ async function renderBlogPost() {
   } else {
     container.textContent = body;
   }
+
+  buildTOC(container);
+  addCopyButtons(container);
+  initReadingProgress();
+  initBackToTop();
+
+  if (typeof Prism !== 'undefined') Prism.highlightAll();
+}
+
+/* ============================================================
+   TABLE OF CONTENTS
+   ============================================================ */
+function buildTOC(container) {
+  const headings = container.querySelectorAll('h2, h3');
+  if (headings.length < 3) return;
+
+  headings.forEach(h => {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+  });
+
+  const items = Array.from(headings).map(h =>
+    `<li class="toc-item ${h.tagName === 'H3' ? 'toc-sub' : ''}">
+       <a href="#${h.id}">${h.textContent}</a>
+     </li>`
+  ).join('');
+
+  const toc = document.createElement('nav');
+  toc.className = 'toc';
+  toc.innerHTML = `<div class="toc-label">Contents</div><ul class="toc-list">${items}</ul>`;
+  container.insertBefore(toc, container.firstChild);
+}
+
+/* ============================================================
+   COPY BUTTONS
+   ============================================================ */
+function addCopyButtons(container) {
+  container.querySelectorAll('pre').forEach(pre => {
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', () => {
+      const code = pre.querySelector('code');
+      navigator.clipboard.writeText(code ? code.textContent : pre.textContent);
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+    pre.appendChild(btn);
+  });
+}
+
+/* ============================================================
+   READING PROGRESS
+   ============================================================ */
+function initReadingProgress() {
+  const bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop || document.body.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = total > 0 ? (scrolled / total * 100) + '%' : '0%';
+  }, { passive: true });
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -21,7 +21,7 @@ Mostly things I'm figuring out in public:
 
 ## How this blog works
 
-Posts are plain Markdown files. No CMS, no database — just text files in a `posts/` folder, rendered in the browser with [marked.js](https://marked.js.org/).
+Posts are plain Markdown files. No CMS, no database — just text files rendered in the browser with [marked.js](https://marked.js.org/).
 
 It's the simplest possible setup. That's intentional.
 

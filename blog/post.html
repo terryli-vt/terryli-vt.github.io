@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="icon" type="image/svg+xml" href="/assets/logo-mark-cropped.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
 
   <script>
     (function(){
@@ -20,12 +21,15 @@
 </head>
 <body>
 
+<!-- Reading progress bar -->
+<div id="reading-progress"></div>
+
 <nav class="nav"></nav>
 <div class="nav-mobile" id="nav-mobile"></div>
 
 <main class="page">
   <!-- Back link -->
-  <a href="/pages/blog.html" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--fg-muted);margin-bottom:2.5rem;transition:color 0.2s" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--fg-muted)'">
+  <a href="../pages/blog.html" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--fg-muted);margin-bottom:2.5rem;transition:color 0.2s" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--fg-muted)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     All posts
   </a>
@@ -41,7 +45,7 @@
 
   <!-- Footer nav -->
   <div style="margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border)">
-    <a href="/pages/blog.html" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--fg-muted);transition:color 0.2s" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--fg-muted)'">
+    <a href="../pages/blog.html" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--fg-muted);transition:color 0.2s" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--fg-muted)'">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       Back to all posts
     </a>
@@ -50,8 +54,19 @@
 
 <footer class="footer"></footer>
 
-<!-- marked.js for markdown rendering -->
+<!-- Back to top button -->
+<button id="back-to-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- marked.js + Prism.js -->
 <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
 <script src="../../js/main.js"></script>
 <script src="../../js/blog.js"></script>
 </body>

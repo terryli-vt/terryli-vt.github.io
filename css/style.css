@@ -674,8 +674,7 @@ p {
   border: 1px solid var(--border);
 }
 .prose pre {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
+  position: relative;
   border-radius: 10px;
   padding: 1.2rem 1.5rem;
   overflow-x: auto;
@@ -687,6 +686,96 @@ p {
   padding: 0;
   font-size: 13.5px;
 }
+
+/* Copy button */
+.copy-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  font-size: 11px;
+  font-family: var(--mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+.prose pre:hover .copy-btn { opacity: 1; }
+.copy-btn:hover { color: rgba(255,255,255,0.9); }
+
+/* TOC */
+.toc {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2.5rem;
+  background: var(--bg-2);
+}
+.toc-label {
+  font-size: 11px;
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 0.75rem;
+}
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.toc-item a {
+  font-size: 14px;
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color var(--t);
+}
+.toc-item a:hover { color: var(--accent); }
+.toc-sub a {
+  padding-left: 1rem;
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+/* Reading progress bar */
+#reading-progress {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  z-index: 99;
+  transition: width 0.08s linear;
+}
+
+/* Back to top */
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  color: var(--fg-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.2s, color var(--t), border-color var(--t);
+  z-index: 50;
+}
+#back-to-top.visible { opacity: 1; transform: translateY(0); }
+#back-to-top:hover { color: var(--fg); border-color: var(--border-2); }
 .prose blockquote {
   border-left: 2px solid var(--accent);
   padding-left: 1.2rem;
