@@ -50,7 +50,7 @@ I used Next.js, TypeScript, Tailwind, Neon PostgreSQL, Drizzle ORM, NextAuth, an
 
 Honestly, the stack was slightly over-engineered for the MVP. I could have shipped the same feature set in half the time with a simpler setup. But I made a deliberate trade: I wanted to practice the full-stack patterns I'd be using in production work — server/client separation, OAuth, typed database queries — and a toy project is the right place to practice them.
 
-The one part of the stack I'd reconsider is Drizzle ORM. It's fast and the TypeScript inference is excellent, but the adapter pattern for NextAuth added more friction than I expected. Next time I'd reach for Prisma for anything involving auth.
+A few specific choices are worth explaining. I picked **Neon** for the database because setup was genuinely fast — a connection string and you're done — and the web console is clear enough that I could watch rows appear in real time as I tested. No local Postgres to maintain, no guessing what's in the database. For the ORM, **Drizzle** felt like the right fit alongside Neon: the schema is just TypeScript, queries are type-safe, and `drizzle-kit studio` gives you a visual view of the database locally when you need it. Together they made the data layer the least painful part of the project.
 
 ---
 
@@ -107,11 +107,15 @@ The other thing I underestimated: prompt engineering for structured output. Gett
 
 ## Auth was the most humbling part
 
-I've implemented auth before, but NextAuth v5 with a Drizzle adapter was new territory. The v5 beta docs are sparse. The Drizzle adapter is community-maintained. There's an Edge Runtime restriction that means you have to split your auth config across two files (`auth.ts` and `auth.config.ts`) to avoid running Node.js-only code on Vercel's edge network.
+I've implemented auth before, but NextAuth v5 with a Drizzle adapter was new territory. The v5 beta docs are sparse. The Drizzle adapter is community-maintained.
 
-I spent a full afternoon on a bug where sessions weren't persisting. The cause: I'd initialized the Drizzle client in a way that didn't work in Edge Runtime. Once I understood the constraint — and why it exists — the fix was straightforward. But it took understanding the architecture to get there.
+The key architectural pattern is splitting the config across two files. `auth.config.ts` holds only the lightweight pieces — providers, session strategy, callbacks — with no heavy dependencies. `auth.ts` then spreads that config in and layers on the Drizzle adapter, which pulls in the database client. The reason for the split: `proxy.ts` (what Next.js 16 calls middleware, now running on the Node.js runtime) imports from `auth.config.ts` to check auth state on every request. Keeping that file dependency-light ensures the middleware stays fast and doesn't drag in anything it doesn't need.
 
-The lesson: third-party libraries save time overall, but their abstraction layers mean that when something breaks, the debug path is longer. Budget for it.
+I spent a good chunk of time just understanding how auth actually flows — what happens between the moment a user clicks "Sign in with Google" and the moment my server component knows who they are. That meant getting clear on the difference between the two session strategies NextAuth supports.
+
+With **database sessions**, a session record is written to your database on login, and every subsequent request hits the database to validate it. You get the ability to revoke sessions instantly, but you're paying a database read on every authenticated request. With **JWT sessions**, the session is encoded into a signed token stored in a cookie — no database lookup needed per request. The trade-off is that you can't invalidate a token until it expires.
+
+For Fitlyst, JWT was the right call. There's no admin use case that requires force-logging someone out, and avoiding a database round-trip on every page load is a meaningful win for a small app running on a free Neon tier.
 
 ---
 

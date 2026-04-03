@@ -1,6 +1,6 @@
 ---
 title: "Hello, World"
-date: "2025-03-27"
+date: "2026-03-26"
 excerpt: "First post — what this blog is for and what I plan to write about."
 tags: ["meta"]
 readtime: "2 min read"
